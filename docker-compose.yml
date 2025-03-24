@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  embedding-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: embedding-api
+    ports:
+      - "8001:8001"
+    volumes:
+      - embedding_models:/root/.cache/huggingface  # Volumen para modelos
+    restart: unless-stopped
+
+volumes:
+  embedding_models:
